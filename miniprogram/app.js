@@ -4,7 +4,5 @@ App({
   onLaunch: function () {
     wx.cloud.init()
   },
-  globalData: {
-    
-  }
+  globalData: {}
 })
