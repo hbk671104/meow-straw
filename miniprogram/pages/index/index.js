@@ -58,7 +58,7 @@ Page({
     const stringnified_params = queryString.stringify(query_params)
     fetch({
       url: `https://api.thecatapi.com/v1/images/search?${stringnified_params}`
-    }).then(({ data }) => {
+    }).then(({ result: data }) => {
       this.setData({
         cats: query_params.page === 0 ? data : [...cats, ...data]
       })
