@@ -13,3 +13,4 @@ $RECYCLE.BIN/
 # Node.js
 miniprogram/node_modules/
 miniprogram/miniprogram_npm/
+cloudfunctions/request/node_modules/
