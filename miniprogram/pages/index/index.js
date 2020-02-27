@@ -1,6 +1,5 @@
 //index.js
-import queryString from 'query-string'
-import { fetch } from '../../utils/util.js'
+import { search } from '../../service/api.js'
 
 Page({
   data: {
@@ -60,10 +59,7 @@ Page({
   },
   fetchCat: function(callback) {
     const { query_params, cats } = this.data
-    const stringnified_params = queryString.stringify(query_params)
-    fetch({
-      url: `https://api.thecatapi.com/v1/images/search?${stringnified_params}`
-    }).then(data => {
+    search(query_params).then(data => {
       this.setData({
         cats: query_params.page === 0 ? data : [...cats, ...data]
       })

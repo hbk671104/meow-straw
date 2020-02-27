@@ -1,8 +1,8 @@
 //app.js
-require('./utils/init.js')
+import './utils/init.js'
 
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     wx.cloud.init()
   },
   globalData: {}

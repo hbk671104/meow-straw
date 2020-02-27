@@ -1,3 +1,6 @@
 {
+  "navigationBarTitleText": "🐱吸管",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 240,
   "usingComponents": {}
 }

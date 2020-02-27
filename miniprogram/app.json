@@ -6,10 +6,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "🐱吸管",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true,
-    "onReachBottomDistance": 240
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
