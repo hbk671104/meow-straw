@@ -15,11 +15,16 @@ Page({
       data: [{ name_cn: "全部" }, ...categories],
       selection: 0
     },
+    mime_types: {
+      data: [{ name_cn: "全部" }, { type: "jpg,png", name_cn: "静图" }, { type: "gif", name_cn: "动图" }],
+      selection: 0
+    },
     query_params: {
       limit: 10,
       page: 0,
       breed_ids: null,
-      category_ids: null
+      category_ids: null,
+      mime_types: null
     }
   },
   onLoad: function() {
@@ -69,10 +74,11 @@ Page({
       this.fetchCat(callback)
     })
   },
-  filterCat: function([breed_index, category_index], callback) {
-    const { breeds, categories, query_params } = this.data
+  filterCat: function([breed_index, category_index, mime_type_index], callback) {
+    const { breeds, categories, mime_types, query_params } = this.data
     const breed_id = breed_index === 0 ? null : breeds.data[breed_index].id
     const category_id = category_index === 0 ? null : categories.data[category_index].id
+    const mime_type = mime_type_index === 0 ? null : mime_types.data[mime_type_index].type
     this.setData({
       breeds: {
         ...breeds,
@@ -82,11 +88,16 @@ Page({
         ...categories,
         selection: category_index
       },
+      mime_types : {
+        ...mime_types,
+        selection: mime_type_index
+      },
       query_params: {
         ...query_params,
         page: 0,
         breed_ids: breed_id,
-        category_ids: category_id
+        category_ids: category_id,
+        mime_types: mime_type
       }
     }, () => {
       this.fetchCat(callback)

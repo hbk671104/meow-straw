@@ -12,8 +12,8 @@
  </view>
   <picker mode="multiSelector"
     bindchange="onPickerChange" 
-    value="{{[breeds.selection, categories.selection]}}" 
-    range="{{[breeds.data, categories.data]}}" 
+    value="{{[breeds.selection, categories.selection, mime_types.selection]}}" 
+    range="{{[breeds.data, categories.data, mime_types.data]}}" 
     range-key="name_cn">
     <view class="filter_container">
       <button class="filter_button">
