@@ -8,11 +8,11 @@ Page({
   data: {
     cats: [],
     breeds: {
-      data: [{ name: "全部" }, ...breeds],
+      data: [{ name_cn: "全部" }, ...breeds],
       selection: 0
     },
     categories: {
-      data: [{ name: "全部" }, ...categories],
+      data: [{ name_cn: "全部" }, ...categories],
       selection: 0
     },
     query_params: {

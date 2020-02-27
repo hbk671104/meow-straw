@@ -14,7 +14,7 @@
     bindchange="onPickerChange" 
     value="{{[breeds.selection, categories.selection]}}" 
     range="{{[breeds.data, categories.data]}}" 
-    range-key="name">
+    range-key="name_cn">
     <view class="filter_container">
       <button class="filter_button">
         <image class="filter_icon"
