@@ -1,20 +1,25 @@
 <!--index.wxml-->
 <view class="page_container">
- <view class="image_container" 
-  wx:key="id" 
-  wx:for="{{cats}}">
-  <image class="image"
-    src="{{item.url}}" 
-    mode="aspectFill" 
-    data-item="{{item}}" 
-    bindtap="previewImage"
-  />
- </view>
- <view class="filter_container">
-  <button class="filter_button" bindtap="onFilterTap">
-    <image class="filter_icon"
-      src="../../assets/icons8-filter-60.png" 
+  <view class="image_container" 
+    wx:key="id" 
+    wx:for="{{cats}}">
+    <image class="image"
+      src="{{item.url}}" 
+      mode="aspectFill" 
+      data-item="{{item}}" 
+      bindtap="previewImage"
     />
-  </button>
  </view>
+  <picker mode="multiSelector"
+    bindchange="onPickerChange" 
+    value="{{[breeds.selection, categories.selection]}}" 
+    range="{{[breeds.data, categories.data]}}" 
+    range-key="name">
+    <view class="filter_container">
+      <button class="filter_button">
+        <image class="filter_icon"
+          src="../../assets/icons8-filter-60.png"/>
+      </button>
+    </view>
+  </picker>
 </view>

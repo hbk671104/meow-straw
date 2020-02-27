@@ -1,9 +1,0 @@
-<!--miniprogram/pages/filter/filter.wxml-->
-<view>
-  <view class="section__title">普通选择器</view>
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{breeds}}">
-    <view class="picker">
-      当前选择：{{breeds[index]}}
-    </view>
-  </picker>
-</view>

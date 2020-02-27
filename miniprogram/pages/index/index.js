@@ -1,12 +1,24 @@
 //index.js
 import { search } from '../../service/api.js'
+import { breeds } from '../../data/breeds.js'
+import { categories } from '../../data/categories.js'
 
 Page({
   data: {
     cats: [],
+    breeds: {
+      data: [{ name: "全部" }, ...breeds],
+      selection: 0
+    },
+    categories: {
+      data: [{ name: "全部" }, ...categories],
+      selection: 0
+    },
     query_params: {
       limit: 10,
-      page: 0
+      page: 0,
+      breed_ids: null,
+      category_ids: null
     }
   },
   onLoad: function() {
@@ -19,10 +31,9 @@ Page({
   onReachBottom: function() {
     this.loadMoreCat()
   },
-  onFilterTap: function() {
-    wx.navigateTo({
-      url: '../filter/filter',
-    })
+  onPickerChange: function({ detail : { value }}) {
+    wx.showLoading({ title: "筛选中..." })
+    this.filterCat(value, () => wx.hideLoading())
   },
   previewImage: function(event) {
     const target = event.target
@@ -52,6 +63,29 @@ Page({
       query_params: {
         ...query_params,
         page: query_params.page + 1
+      }
+    }, () => {
+      this.fetchCat(callback)
+    })
+  },
+  filterCat: function([breed_index, category_index], callback) {
+    const { breeds, categories, query_params } = this.data
+    const breed_id = breed_index === 0 ? null : breeds.data[breed_index].id
+    const category_id = category_index === 0 ? null : categories.data[category_index].id
+    this.setData({
+      breeds: {
+        ...breeds,
+        selection: breed_index
+      },
+      categories: {
+        ...categories,
+        selection: category_index
+      },
+      query_params: {
+        ...query_params,
+        page: 0,
+        breed_ids: breed_id,
+        category_ids: category_id
       }
     }, () => {
       this.fetchCat(callback)

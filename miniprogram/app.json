@@ -1,7 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/filter/filter"
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
