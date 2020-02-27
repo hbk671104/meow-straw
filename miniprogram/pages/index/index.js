@@ -11,8 +11,8 @@ Page({
     }
   },
   onLoad: function() {
-    wx.showNavigationBarLoading()
-    this.loadCat(() => wx.hideNavigationBarLoading())
+    wx.showLoading({ title: "吮吸中..."})
+    this.loadCat(() => wx.hideLoading())
   },
   onPullDownRefresh: function() {
     this.loadCat(() => wx.stopPullDownRefresh())

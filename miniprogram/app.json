@@ -5,10 +5,10 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "猫吸管",
+    "navigationBarTitleText": "🐱吸管",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true,
-    "onReachBottomDistance": 120
+    "onReachBottomDistance": 240
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
