@@ -1,5 +1,6 @@
 //index.js
 import { search } from '../../service/api.js'
+import { removeDuplicates } from '../../utils/util.js'
 import { breeds } from '../../data/breeds.js'
 import { categories } from '../../data/categories.js'
 
@@ -95,7 +96,7 @@ Page({
     const { query_params, cats } = this.data
     search(query_params).then(data => {
       this.setData({
-        cats: query_params.page === 0 ? data : [...cats, ...data]
+        cats: query_params.page === 0 ? data : removeDuplicates([...cats, ...data])
       })
     }).finally(callback)
   },

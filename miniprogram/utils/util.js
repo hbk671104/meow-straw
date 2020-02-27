@@ -30,3 +30,12 @@ export const fetch = (url, options = {}) => {
     }
   }).then(({ result }) => JSON.parse(result))
 }
+
+export const removeDuplicates = (array, key = 'id') => {
+  return array.reduce((acc, item) => {
+    if (acc.find(i => i[key] === item[key])) {
+      return acc
+    }
+    return [...acc, item]
+  }, [])
+}
