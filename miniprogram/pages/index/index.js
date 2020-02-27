@@ -20,6 +20,11 @@ Page({
   onReachBottom: function() {
     this.loadMoreCat()
   },
+  onFilterTap: function() {
+    wx.navigateTo({
+      url: '../filter/filter',
+    })
+  },
   previewImage: function(event) {
     const target = event.target
     const { dataset: { item } } = target

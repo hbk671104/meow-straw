@@ -10,4 +10,11 @@
     bindtap="previewImage"
   />
  </view>
+ <view class="filter_container">
+  <button class="filter_button" bindtap="onFilterTap">
+    <image class="filter_icon"
+      src="../../assets/icons8-filter-60.png" 
+    />
+  </button>
+ </view>
 </view>
