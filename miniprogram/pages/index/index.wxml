@@ -1,14 +1,21 @@
 <!--index.wxml-->
 <view class="page_container">
-  <view class="image_container" 
-    wx:key="id" 
-    wx:for="{{cats}}">
-    <image class="image"
-      src="{{item.url}}" 
-      mode="aspectFill" 
-      data-item="{{item}}" 
-      bindtap="previewImage"
-    />
+  <view style="width: {{100 / cats.display.length}}vw;" 
+    wx:key="index"  
+    wx:for="{{cats.display}}" 
+    wx:for-item="column_data">
+    <view class="image_container" 
+      wx:key="id" 
+      wx:for="{{column_data}}">
+      <image
+        style="height: {{100 / cats.display.length * item.height / item.width}}vw;"
+        class="image"
+        src="{{item.url}}" 
+        mode="aspectFill"  
+        data-item="{{item}}"   
+        bindtap="previewImage"
+      />
+    </view>
   </view>
   <picker mode="multiSelector"
     bindchange="onPickerChange" 

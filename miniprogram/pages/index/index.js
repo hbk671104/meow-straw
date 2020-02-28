@@ -1,12 +1,15 @@
 //index.js
 import { search } from '../../service/api.js'
-import { removeDuplicates } from '../../utils/util.js'
+import { removeDuplicates, splitColumnData } from '../../utils/util.js'
 import { breeds } from '../../data/breeds.js'
 import { categories } from '../../data/categories.js'
 
 Page({
   data: {
-    cats: [],
+    cats: {
+      raw: [],
+      display: []
+    },
     breeds: {
       data: [{ name_cn: "全部" }, ...breeds],
       selection: 0
@@ -46,10 +49,10 @@ Page({
     const { dataset: { item } } = target
     
     // preview image
-    const { cats } = this.data
+    const { cats : { raw }} = this.data
     wx.previewImage({
       current: item.url,
-      urls: cats.map(c => c.url),
+      urls: raw.map(c => c.url),
     })
   },
   loadCat: function(callback) {
@@ -104,11 +107,20 @@ Page({
     })
   },
   fetchCat: function(callback) {
-    const { query_params, cats } = this.data
+    const { query_params } = this.data
     search(query_params).then(data => {
       this.setData({
-        cats: query_params.page === 0 ? data : removeDuplicates([...cats, ...data])
+        cats: this.formatData(data)
       })
     }).finally(callback)
   },
+  formatData: function(data) {
+    const { query_params, cats: { raw } } = this.data
+    const raw_temp = query_params.page === 0 ? data : removeDuplicates([...raw, ...data])
+    const display_temp = splitColumnData(raw_temp)
+    return {
+      raw: raw_temp,
+      display: display_temp
+    }
+  }
 })
