@@ -20,7 +20,7 @@ Page({
       selection: 0
     },
     query_params: {
-      limit: 10,
+      limit: 15,
       page: 0,
       breed_ids: null,
       category_ids: null,
