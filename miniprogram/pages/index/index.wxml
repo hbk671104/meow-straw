@@ -9,7 +9,7 @@
       data-item="{{item}}" 
       bindtap="previewImage"
     />
- </view>
+  </view>
   <picker mode="multiSelector"
     bindchange="onPickerChange" 
     value="{{[breeds.selection, categories.selection, mime_types.selection]}}" 
