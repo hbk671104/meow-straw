@@ -1,38 +1,38 @@
 const app = getApp()
 const { windowWidth } = app.globalData.system_info
 
-export const fetch = (url, options = {}) => {
-  return new Promise((resolve, reject) => {
-      wx.request({
-        ...options,
-        url,
-        header: {
-          'x-api-key': 'e0bb4bbb-657a-4e95-a85c-d7ea988879ed'
-        },
-        success: function({ data }) {
-          resolve(data)
-        },
-        fail: function() {
-          reject()
-        }
-      })
-  })
-}
-
 // export const fetch = (url, options = {}) => {
-//   return wx.cloud.callFunction({ 
-//     name: "request", 
-//     data: {
-//       url,
-//       options: {
+//   return new Promise((resolve, reject) => {
+//       wx.request({
 //         ...options,
-//         headers : {
+//         url,
+//         header: {
 //           'x-api-key': 'e0bb4bbb-657a-4e95-a85c-d7ea988879ed'
+//         },
+//         success: function({ data }) {
+//           resolve(data)
+//         },
+//         fail: function() {
+//           reject()
 //         }
-//       }
-//     }
-//   }).then(({ result }) => JSON.parse(result))
+//       })
+//   })
 // }
+
+export const fetch = (url, options = {}) => {
+  return wx.cloud.callFunction({ 
+    name: "request", 
+    data: {
+      url,
+      options: {
+        ...options,
+        headers : {
+          'x-api-key': 'e0bb4bbb-657a-4e95-a85c-d7ea988879ed'
+        }
+      }
+    }
+  }).then(({ result }) => JSON.parse(result))
+}
 
 export const removeDuplicates = (array, key = 'id') => {
   return array.reduce((acc, item) => {
